@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daily Promise – ADULLAM HOLY FIRE MINISTRIES</title>
+
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.92);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 500px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1.5s ease;
+    }
+
+    h1 {
+      color: #800000;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      color: #444;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .verse-card {
+      background: #f9f5f5;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+      font-size: 18px;
+      line-height: 1.6;
+      margin-top: 15px;
+      transition: transform 0.4s;
+    }
+
+    .verse-card:hover {
+      transform: scale(1.05);
+    }
+
+    .verse-ref {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #800000;
+    }
+
+    .btn {
+      margin-top: 20px;
+      background: #800000;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #a52a2a;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>ADULLAM HOLY FIRE MINISTRIES</h1>
+    <h3>Daily Promise Verse</h3>
+
+    <div id="verse-box" class="verse-card">
+      <!-- Bible verse will appear here -->
+    </div>
+
+    <button class="btn" onclick="showRandomVerse()">God's Promise</button>
+  </div>
+
+  <script>
+    // Array of Promise Verses (English + Telugu)
+    const verses = [
+  {
+    "text": "For I know the plans I have for you, declares the Lord.",
+    "telugu": "నేను మీకై కలిగించిన ఆలోచనలు నాకు తెలియును అని యెహోవా సెలవిచ్చుచున్నాడు.",
+    "ref": "Jeremiah 29:11"
+  },
+  {
+    "text": "The Lord is my shepherd; I shall not want.",
+    "telugu": "యెహోవా నా కాపరి, నాకు కొదువలేదు.",
+    "ref": "Psalm 23:1"
+  },
+  {
+    "text": "I can do all things through Christ who strengthens me.",
+    "telugu": "నన్ను బలపరచు క్రీస్తుద్వారా నేను సమస్తమును చేయగలను.",
+    "ref": "Philippians 4:13"
+  },
+  {
+    "text": "The Lord is my light and my salvation—whom shall I fear?",
+    "telugu": "యెహోవా నా వెలుగును నా రక్షణయు గనుక నేను ఎవనిని భయపడుదును?",
+    "ref": "Psalm 27:1"
+  },
+  {
+    "text": "Cast all your anxiety on Him because He cares for you.",
+    "telugu": "మీ ఆందోళనలు అంతయు ఆయనమీద వేయుడి, ఆయన మీ విషయములో శ్రద్ధ చూపుచున్నాడు.",
+    "ref": "1 Peter 5:7"
+  },
+  {
+    "text": "The Lord will fight for you; you need only to be still.",
+    "telugu": "యెహోవా మీకొరకు యుద్ధము చేయును, మీరు నిశ్శబ్దముగా ఉండుడి.",
+    "ref": "Exodus 14:14"
+  },
+  {
+    "text": "Come to me, all you who are weary and burdened, and I will give you rest.",
+    "telugu": "శ్రమపడుచు భారమువహించుచున్న వారందరును నా యొద్దకు రండి; నేను మీకు విశ్రాంతినిచ్చెదను.",
+    "ref": "Matthew 11:28"
+  },
+  {
+    "text": "The Lord is good, a refuge in times of trouble.",
+    "telugu": "యెహోవా మేలైనవాడు, కష్టకాలమందు శరణార్థి.",
+    "ref": "Nahum 1:7"
+  },
+  {
+    "text": "Be strong and courageous. Do not be afraid; do not be discouraged.",
+    "telugu": "ధైర్యముగా బలముగా ఉండుడి; భయపడకుడి, నిరుత్సాహపడకుడి.",
+    "ref": "Joshua 1:9"
+  },
+  {
+    "text": "Trust in the Lord with all your heart and lean not on your own understanding.",
+    "telugu": "నీ అంతరంగముతో యెహోవానుబట్టి విశ్వాసముంచుము; నీ సొంత బుద్ధిని ఆధారపడవద్దు.",
+    "ref": "Proverbs 3:5"
+  },
+  {
+    "text": "In the beginning God created the heavens and the earth.",
+    "telugu": "ఆదిలో దేవుడు ఆకాశమును భూమిని సృజించాడు.",
+    "ref": "Genesis 1:1"
+  },
+  {
+    "text": "God is our refuge and strength, an ever-present help in trouble.",
+    "telugu": "దేవుడు మన శరణుయు బలమునై, కష్టకాలమందు తక్షణ సహాయకుడై యున్నాడు.",
+    "ref": "Psalm 46:1"
+  },
+  {
+    "text": "Do to others as you would have them do to you.",
+    "telugu": "మీకు మనుషులు చేయునట్లు మీరు వారికిని చేయుడి.",
+    "ref": "Luke 6:31"
+  },
+  {
+    "text": "The Lord bless you and keep you.",
+    "telugu": "యెహోవా నిన్ను ఆశీర్వదించి కాపాడును.",
+    "ref": "Numbers 6:24"
+  },
+  {
+    "text": "Jesus Christ is the same yesterday and today and forever.",
+    "telugu": "యేసుక్రీస్తు నిన్నను నేటిని నిత్యమును అంతే.",
+    "ref": "Hebrews 13:8"
+  },
+  {
+    "text": "Your word is a lamp for my feet, a light on my path.",
+    "telugu": "నీ వాక్యము నా పాదములకు దీపమును, నా మార్గమునకు వెలుగును.",
+    "ref": "Psalm 119:105"
+  },
+  {
+    "text": "If God is for us, who can be against us?",
+    "telugu": "దేవుడు మనకొరకు యుంటే మనకు విరోధులై ఎవడు నిలుచును?",
+    "ref": "Romans 8:31"
+  },
+  {
+    "text": "The Lord is close to the brokenhearted.",
+    "telugu": "యెహోవా మనస్సు విరిగినవారికి సమీపమందున్నాడు.",
+    "ref": "Psalm 34:18"
+  },
+  {
+    "text": "We love because He first loved us.",
+    "telugu": "ఆయన ముందుగా మనలను ప్రేమించినందున మనము ప్రేమించుచున్నాము.",
+    "ref": "1 John 4:19"
+  },
+  {
+    "text": "The Lord gives strength to his people; the Lord blesses his people with peace.",
+    "telugu": "యెహోవా తన ప్రజలకు బలమును ఇస్తాడు; యెహోవా తన ప్రజలకు సమాధానముతో ఆశీర్వదించును.",
+    "ref": "Psalm 29:11"
+  },
+  {
+    "text": "The Lord is gracious and compassionate, slow to anger and rich in love.",
+    "telugu": "యెహోవా కృపాయుతుడును దయాసముపేతుడును, ఆగ్రహమందు మందముగా ఉండువాడును ప్రేమయందు సమృద్ధుడును.",
+    "ref": "Psalm 145:8"
+  },
+  {
+    "text": "With God all things are possible.",
+    "telugu": "దేవునియొద్ద సమస్తమును సాధ్యమే.",
+    "ref": "Matthew 19:26"
+  },
+  {
+    "text": "Peace I leave with you; my peace I give you.",
+    "telugu": "శాంతిని నేను మీకు విడిచిపెట్టుచున్నాను; నా శాంతిని మీకిచ్చుచున్నాను.",
+    "ref": "John 14:27"
+  },
+  {
+    "text": "The Lord is my strength and my shield.",
+    "telugu": "యెహోవా నా బలము, నా కవచము.",
+    "ref": "Psalm 28:7"
+  },
+  {
+    "text": "He heals the brokenhearted and binds up their wounds.",
+    "telugu": "ఆయన మనస్సు విరిగినవారిని స్వస్థపరచును, వారి గాయములను కట్టిపడును.",
+    "ref": "Psalm 147:3"
+  },
+  {
+    "text": "Do not let your hearts be troubled. You believe in God; believe also in me.",
+    "telugu": "మీ హృదయము కలత చెందకుండునట్లు చూడుడి; దేవునియందు విశ్వాసముంచుడి, నాయందును విశ్వాసముంచుడి.",
+    "ref": "John 14:1"
+  },
+  {
+    "text": "Be still, and know that I am God.",
+    "telugu": "నిశ్శబ్దముగా ఉండుడి, నేను దేవుడనని తెలిసికొనుడి.",
+    "ref": "Psalm 46:10"
+  },
+  {
+    "text": "The name of the Lord is a fortified tower; the righteous run to it and are safe.",
+    "telugu": "యెహోవా నామము బలమైన కొండకోటయై యున్నది; నీతిమంతులు దానియొద్దకు పరుగెత్తి రక్షింపబడుదురు.",
+    "ref": "Proverbs 18:10"
+  },
+  {
+    "text": "The joy of the Lord is your strength.",
+    "telugu": "యెహోవా సంతోషమే మీ బలము.",
+    "ref": "Nehemiah 8:10"
+  },
+  {
+    "text": "He will never leave you nor forsake you.",
+    "telugu": "ఆయన నిన్ను విడిచిపెట్టడు, నీకు దూరముగానుండడు.",
+    "ref": "Deuteronomy 31:6"
+  },
+  {
+    "text": "The Lord is near to all who call on him.",
+    "telugu": "యెహోవా ఆయనను ప్రార్థించువారందరికిని సమీపమందున్నాడు.",
+    "ref": "Psalm 145:18"
+  },
+  {
+    "text": "Those who hope in the Lord will renew their strength.",
+    "telugu": "యెహోవాలో నిరీక్షణ కలిగినవారు కొత్త బలము పొందుదురు.",
+    "ref": "Isaiah 40:31"
+  },
+  {
+    "text": "Give thanks in all circumstances.",
+    "telugu": "ప్రతి పరిస్థితిలోను కృతజ్ఞతలు చెప్పుడి.",
+    "ref": "1 Thessalonians 5:18"
+  },
+  {
+    "text": "The Lord will guide you always.",
+    "telugu": "యెహోవా ఎల్లప్పుడు నిన్ను దారిపొడిచును.",
+    "ref": "Isaiah 58:11"
+  },
+  {
+    "text": "The righteous person may have many troubles, but the Lord delivers him from them all.",
+    "telugu": "నీతిమంతునికి అనేక కష్టములు కలుగును, కానీ యెహోవా వాటన్నిటినుండి అతనిని విడిపించును.",
+    "ref": "Psalm 34:19"
+  },
+  {
+    "text": "Seek first his kingdom and his righteousness, and all these things will be given to you as well.",
+    "telugu": "ముందుగా ఆయన రాజ్యమును ఆయన నీతిని వెదకుడి; అప్పుడు ఈ సంగతులన్నియు మీకు కలుగును.",
+    "ref": "Matthew 6:33"
+  },
+  {
+    "text": "The Lord upholds all who fall and lifts up all who are bowed down.",
+    "telugu": "పడిపోవువారిని యెహోవా నిలబెడును, వంగినవారిని లేపును.",
+    "ref": "Psalm 145:14"
+  },
+  {
+    "text": "God is love.",
+    "telugu": "దేవుడు ప్రేమయే.",
+    "ref": "1 John 4:8"
+  },
+  {
+    "text": "Do not worry about tomorrow.",
+    "telugu": "రేపటి విషయమునకై చింతింపవద్దు.",
+    "ref": "Matthew 6:34"
+  },
+  {
+    "text": "The Lord is faithful to all his promises.",
+    "telugu": "యెహోవా తన వాగ్దానములన్నిటికి నమ్మకముగానున్నాడు.",
+    "ref": "Psalm 145:13"
+  },
+  {
+    "text": "Let everything that has breath praise the Lord.",
+    "telugu": "శ్వాస కలిగిన ప్రతివాడును యెహోవాను స్తుతించునుగాక.",
+    "ref": "Psalm 150:6"
+  },
+  {
+    "text": "The Lord will keep you from all harm—he will watch over your life.",
+    "telugu": "యెహోవా నిన్ను సమస్త కీడనుండి కాపాడును, ఆయన నీ ప్రాణమును రక్షించును.",
+    "ref": "Psalm 121:7"
+  },
+  {
+    "text": "Call to me and I will answer you.",
+    "telugu": "నన్ను పిలిచినప్పుడు నేను నీకు జవాబివ్వుదును.",
+    "ref": "Jeremiah 33:3"
+  },
+  {
+    "text": "Love your neighbor as yourself.",
+    "telugu": "నీ పొరుగువానిని నీలాంటి వాడిగా ప్రేమింపుము.",
+    "ref": "Mark 12:31"
+  },
+  {
+    "text": "The Lord is my portion, therefore I will wait for him.",
+    "telugu": "యెహోవా నా భాగము గనుక నేను ఆయనను నిరీక్షించెదను.",
+    "ref": "Lamentations 3:24"
+  },
+  {
+    "text": "Even though I walk through the darkest valley, I will fear no evil, for you are with me.",
+    "telugu": "నేను అంధకార లోయలో నడిచినను కీడును భయపడను, నీవు నాతో ఉన్నావు.",
+    "ref": "Psalm 23:4"
+  },
+  {
+    "text": "Blessed are the peacemakers, for they will be called children of God.",
+    "telugu": "శాంతి కలిగించువారు ధన్యులు, వారు దేవుని పిల్లలని పిలువబడుదురు.",
+    "ref": "Matthew 5:9"
+  },
+  {
+    "text": "Do not be overcome by evil, but overcome evil with good.",
+    "telugu": "చెడిచేత ఓడిపోవద్దు, మంచి చేత చెడిని జయించుము.",
+    "ref": "Romans 12:21"
+  },
+  {
+    "text": "Blessed are those who hunger and thirst for righteousness, for they will be filled.",
+    "telugu": "నీతికై ఆకలిగొన్నవారు దాహపడినవారు ధన్యులు, వారు తృప్తిపొందుదురు.",
+    "ref": "Matthew 5:6"
+  }
+];
+
+    // Pick a verse based on today's date
+    const today = new Date();
+    const index = today.getDate() % verses.length;
+    const verseOfDay = verses[index];
+
+    // Show verse on page load
+    function displayVerse(v) {
+      document.getElementById("verse-box").innerHTML = `
+        <div>"${v.text}"</div>
+        <div style="margin-top:10px; font-size:16px; color:#333;">"${v.telugu}"</div>
+        <div class="verse-ref">– ${v.ref}</div>
+      `;
+    }
+
+    // Initial verse (daily)
+    displayVerse(verseOfDay);
+
+    // On button click → random verse
+    function showRandomVerse() {
+      const randomIndex = Math.floor(Math.random() * verses.length);
+      displayVerse(verses[randomIndex]);
+    }
+  </script>
+</body>
+
+</html>
