@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daily Promise – ADULLAM HOLY FIRE MINISTRIES</title>
+
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.92);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      width: 500px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 1.5s ease;
+    }
+
+    h1 {
+      color: #800000;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      color: #444;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .verse-card {
+      background: #f9f5f5;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+      font-size: 18px;
+      line-height: 1.6;
+      margin-top: 15px;
+      transition: transform 0.4s;
+    }
+
+    .verse-card:hover {
+      transform: scale(1.05);
+    }
+
+    .verse-ref {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #800000;
+    }
+
+    .btn {
+      margin-top: 20px;
+      background: #800000;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #a52a2a;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>ADULLAM HOLY FIRE MINISTRIES</h1>
+    <h3>Daily Promise Verse</h3>
+
+    <div id="verse-box" class="verse-card">
+      <!-- Bible verse will appear here -->
+    </div>
+
+    <button class="btn" onclick="showRandomVerse()">God's Promise</button>
+  </div>
+
+  <script>
+    // Array of Promise Verses (English + Telugu)
+    const verses = [
+      {
+        text: "I can do all things through Christ who strengthens me.",
+        telugu: "నన్ను బలపరచువాని ద్వారా నేను సమస్తమును చేయగలను.",
+        ref: "Philippians 4:13"
+      },
+      {
+        text: "The Lord is my shepherd; I shall not want.",
+        telugu: "యెహోవా నా కాపరి; నాకు లోపము కలుగదు.",
+        ref: "Psalm 23:1"
+      },
+      {
+        text: "Fear not, for I am with you; be not dismayed, for I am your God.",
+        telugu: "భయపడకుము, నేను నీతో ఉన్నాను; దిగులుపడకుము, నేను నీ దేవుడను.",
+        ref: "Isaiah 41:10"
+      },
+      {
+        text: "Cast all your anxiety on him because he cares for you.",
+        telugu: "మీ ఆందోళనలన్నిటినీ ఆయనపై వేయుడి, ఎందుకంటే ఆయన మీ కోసం జాగ్రత్త పడుచున్నాడు.",
+        ref: "1 Peter 5:7"
+      },
+      {
+        text: "My grace is sufficient for you, for my power is made perfect in weakness.",
+        telugu: "నా కృప నీకు చాలును; బలహీనతలో నా శక్తి సంపూర్ణమగును.",
+        ref: "2 Corinthians 12:9"
+      },
+      {
+        text: "The Lord will fight for you; you need only to be still.",
+        telugu: "యెహోవా మీకై యుద్ధము చేయును; మీరు ప్రశాంతముగా నుండుడి.",
+        ref: "Exodus 14:14"
+      },
+      {
+        text: "For I know the plans I have for you, declares the Lord.",
+        telugu: "నేను మీకై కలిగించిన ఆలోచనలు నాకు తెలియును అని యెహోవా సెలవిచ్చుచున్నాడు.",
+        ref: "Jeremiah 29:11"
+      }
+    ];
+
+    // Pick a verse based on today's date
+    const today = new Date();
+    const index = today.getDate() % verses.length;
+    const verseOfDay = verses[index];
+
+    // Show verse on page load
+    function displayVerse(v) {
+      document.getElementById("verse-box").innerHTML = `
+        <div>"${v.text}"</div>
+        <div style="margin-top:10px; font-size:16px; color:#333;">"${v.telugu}"</div>
+        <div class="verse-ref">– ${v.ref}</div>
+      `;
+    }
+
+    // Initial verse (daily)
+    displayVerse(verseOfDay);
+
+    // On button click → random verse
+    function showRandomVerse() {
+      const randomIndex = Math.floor(Math.random() * verses.length);
+      displayVerse(verses[randomIndex]);
+    }
+  </script>
+</body>
+
+</html>
