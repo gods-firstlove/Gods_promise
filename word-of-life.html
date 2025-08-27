@@ -95,16 +95,19 @@
     <h3>Daily Promise Verse</h3>
 
     <div id="verse-box" class="verse-card">
-      <!-- Bible verse will appear here -->
+      <!-- Bible verse will appear here after button click -->
     </div>
 
-    <button class="btn" onclick="showRandomVerse()">God's Promise</button>
+    <button class="btn" onclick="showVerse()">God's Promise</button>
   </div>
+
+  <!-- Hidden audio -->
+  <audio id="songs" src="https://www.uecf.net/songs/albums/JabathotaJayaGeethaalu/1.mp3"></audio>
 
   <script>
     // Array of Promise Verses (English + Telugu)
     const verses = [
-  {
+        {
     "text": "For I know the plans I have for you, declares the Lord.",
     "telugu": "నేను మీకై కలిగించిన ఆలోచనలు నాకు తెలియును అని యెహోవా సెలవిచ్చుచున్నాడు.",
     "ref": "Jeremiah 29:11"
@@ -351,27 +354,32 @@
   }
 ];
 
-    // Pick a verse based on today's date
-    const today = new Date();
-    const index = today.getDate() % verses.length;
-    const verseOfDay = verses[index];
+    const songs = [
+      "https://www.uecf.net/songs/albums/JabathotaJayaGeethaalu/1.mp3",
+      "https://www.uecf.net/songs/albums/JabathotaJayaGeethaalu/2.mp3",
+      "https://www.uecf.net/songs/albums/JabathotaJayaGeethaalu/3.mp3",
+      "https://www.uecf.net/songs/albums/JabathotaJayaGeethaalu/4.mp3",
+      "https://www.uecf.net/songs/albums/JabathotaJayaGeethaalu/5.mp3"
+    ];
 
-    // Show verse on page load
-    function displayVerse(v) {
+
+    // Function to show verse + play song
+    function showVerse() {
+      const today = new Date();
+      const index = today.getDate() % verses.length;
+      const songIndex = Math.floor(Math.random() * songs.length);
+      const verseOfDay = verses[index];
+
       document.getElementById("verse-box").innerHTML = `
-        <div>"${v.text}"</div>
-        <div style="margin-top:10px; font-size:16px; color:#333;">"${v.telugu}"</div>
-        <div class="verse-ref">– ${v.ref}</div>
+        <div>"${verseOfDay.text}"</div>
+        <div style="margin-top:10px; font-size:16px; color:#333;">"${verseOfDay.telugu}"</div>
+        <div class="verse-ref">– ${verseOfDay.ref}</div>
       `;
-    }
 
-    // Initial verse (daily)
-    displayVerse(verseOfDay);
-
-    // On button click → random verse
-    function showRandomVerse() {
-      const randomIndex = Math.floor(Math.random() * verses.length);
-      displayVerse(verses[randomIndex]);
+      // Play random song
+      const audio = document.getElementById("songs");
+      audio.src = songs[songIndex];
+      audio.play();
     }
   </script>
 </body>
