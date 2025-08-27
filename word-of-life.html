@@ -98,11 +98,11 @@
       <!-- Bible verse will appear here after button click -->
     </div>
 
-    <button class="btn" onclick="showVerse()">God's Promise</button>
+    <button class="btn" onclick="showRandomVerse()">God's Promise</button>
   </div>
 
   <!-- Hidden audio -->
-  <audio id="songs" src="https://www.uecf.net/songs/albums/JabathotaJayaGeethaalu/1.mp3"></audio>
+  <audio id="songs"></audio>
 
   <script>
     // Array of Promise Verses (English + Telugu)
@@ -353,7 +353,7 @@
     "ref": "Matthew 5:6"
   }
 ];
-
+               
     const songs = [
       "https://www.uecf.net/songs/albums/JabathotaJayaGeethaalu/1.mp3",
       "https://www.uecf.net/songs/albums/JabathotaJayaGeethaalu/2.mp3",
@@ -362,21 +362,24 @@
       "https://www.uecf.net/songs/albums/JabathotaJayaGeethaalu/5.mp3"
     ];
 
-
-    // Function to show verse + play song
-    function showVerse() {
-      const today = new Date();
-      const index = today.getDate() % verses.length;
-      const songIndex = Math.floor(Math.random() * songs.length);
-      const verseOfDay = verses[index];
-
+// Display verse inside box
+    function displayVerse(v) {
       document.getElementById("verse-box").innerHTML = `
-        <div>"${verseOfDay.text}"</div>
-        <div style="margin-top:10px; font-size:16px; color:#333;">"${verseOfDay.telugu}"</div>
-        <div class="verse-ref">– ${verseOfDay.ref}</div>
+        <div>"${v.text}"</div>
+        <div style="margin-top:10px; font-size:16px; color:#333;">"${v.telugu}"</div>
+        <div class="verse-ref">– ${v.ref}</div>
       `;
+    }
 
-      // Play random song
+    // Show random verse + play random song
+    function showRandomVerse() {
+      const randomIndex = Math.floor(Math.random() * verses.length);
+      const songIndex = Math.floor(Math.random() * songs.length);
+
+      // Display verse
+      displayVerse(verses[randomIndex]);
+
+      // Play song
       const audio = document.getElementById("songs");
       audio.src = songs[songIndex];
       audio.play();
